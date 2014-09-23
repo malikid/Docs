@@ -188,16 +188,22 @@ Even for private names, grouping can also indicate relationships between items, 
         errorCount  uint32
     )
 
+##名稱
 ##Names
+
+如同其他語言，名稱在 Go 裡也很重要，甚至有語義上的作用，例如：名稱第一個字母的大小寫關係到能否在套件外存取。因此，我們值得花一些時間在 Go 的命名規範上著墨。
 
 Names are as important in Go as in any other language. They even have semantic effect: the visibility of a name outside a package is determined by whether its first character is upper case. It's therefore worth spending a little time talking about naming conventions in Go programs.
 
+###套件名稱
 ###Package names
 
+匯入時，套件的名稱是套件內容的存取接口。
 When a package is imported, the package name becomes an accessor for the contents. After
-
+```
     import "bytes"
-
+```
+在上面這行之後，我們就可以使用 bytes.Buffer 了。如果每個人都可以使用相同的名稱來使用同一個套件，對於開發程式來說是非常有幫助的，這代表套件名稱要夠「好」——— 夠短、夠精准、還要好記。傳統上，
 the importing package can talk about bytes.Buffer. It's helpful if everyone using the package can use the same name to refer to its contents, which implies that the package name should be good: short, concise, evocative. By convention, packages are given lower case, single-word names; there should be no need for underscores or mixedCaps. Err on the side of brevity, since everyone using your package will be typing that name. And don't worry about collisions a priori. The package name is only the default name for imports; it need not be unique across all source code, and in the rare case of a collision the importing package can choose a different name to use locally. In any case, confusion is rare because the file name in the import determines just which package is being used.
 
 Another convention is that the package name is the base name of its source directory; the package in src/pkg/encoding/base64 is imported as "encoding/base64" but has name base64, not encoding_base64 and not encodingBase64.
