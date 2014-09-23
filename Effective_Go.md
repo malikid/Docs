@@ -203,7 +203,7 @@ When a package is imported, the package name becomes an accessor for the content
 ```
     import "bytes"
 ```
-在上面這行之後，我們就可以使用 bytes.Buffer 了。如果每個人都可以使用相同的名稱來使用同一個套件，對於開發程式來說是非常有幫助的，這代表套件名稱要夠「好」——— 夠短、夠精准、還要好記。傳統上，
+在上面這行之後，我們就可以使用 bytes.Buffer 了。如果每個人都可以用相同的名稱來使用同一個套件，對程式開發來說是很有幫助的，這代表套件名稱要夠「好」——— 夠短、夠精準、還要好記。傳統上，
 the importing package can talk about bytes.Buffer. It's helpful if everyone using the package can use the same name to refer to its contents, which implies that the package name should be good: short, concise, evocative. By convention, packages are given lower case, single-word names; there should be no need for underscores or mixedCaps. Err on the side of brevity, since everyone using your package will be typing that name. And don't worry about collisions a priori. The package name is only the default name for imports; it need not be unique across all source code, and in the rare case of a collision the importing package can choose a different name to use locally. In any case, confusion is rare because the file name in the import determines just which package is being used.
 
 Another convention is that the package name is the base name of its source directory; the package in src/pkg/encoding/base64 is imported as "encoding/base64" but has name base64, not encoding_base64 and not encodingBase64.
